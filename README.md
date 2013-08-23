@@ -1,4 +1,4 @@
 Date-I18N
 =========
 
-Date I18N work
+This my work on building a class to represent an international date. To do this it combines DateTime and TimeZoneInfo objects.
