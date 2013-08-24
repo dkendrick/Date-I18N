@@ -17,7 +17,7 @@ namespace DateI18N.Tests.DateWithTimeZoneTests
         {
             DateOffset = Rand.Next(365);
             DateTimeInfo = DateTime.Now.AddDays(DateOffset);
-            TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("New Zealand Standard Time");
+            TimeZoneInfo = TimeZoneInfo.Local;
 
             TestDate = new DateWithTimeZone(DateTimeInfo, TimeZoneInfo);
         }
