@@ -41,7 +41,8 @@ namespace DateI18N.Tests.DateWithTimeZoneTests
         [Test]
         public void ShouldReturnTheTheCorrectUtcDateFromUserDate()
         {
-            var utcDifference = (DateTime.UtcNow - DateTime.Now).TotalMinutes;
+            var testDate = DateTime.Now.AddDays(DateOffset);
+            var utcDifference = (TimeZoneInfo.ConvertTimeToUtc(testDate) - testDate).TotalMinutes;
             var expectedDate = DateTimeInfo.AddMinutes(utcDifference);
 
             var result = TestDate.GetUtcDateTime();
@@ -78,7 +79,7 @@ namespace DateI18N.Tests.DateWithTimeZoneTests
         public void ShouldReturnTheCorrectUserDateFromUtcDate()
         {
             var testDate = DateTime.UtcNow.AddDays(DateOffset);
-            var utcDifference = (DateTime.Now - DateTime.UtcNow).TotalMinutes;
+            var utcDifference = (TimeZoneInfo.ConvertTimeFromUtc(testDate, TimeZoneInfo.Local) - testDate).TotalMinutes;
             var expected = testDate.AddMinutes(utcDifference);
             TestDate = new DateWithTimeZone(testDate, TimeZoneInfo);
 
